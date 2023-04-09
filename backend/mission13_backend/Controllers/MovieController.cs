@@ -22,6 +22,7 @@ namespace mission13_backend.Controllers
         public IEnumerable<Movies> Get()
         {
             return context.Movies.ToArray();
+
         }
     }
 }

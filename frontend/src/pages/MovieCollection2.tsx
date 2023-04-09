@@ -4,19 +4,13 @@ import { Movie } from '../../types/movie';
 function MovieCollection2() {
   const [movieData, setMovieData] = useState<Movie[]>([]);
 
-  const fetchMovie = async () => {
-    const rsp = await fetch('https://localhost:4000/movie');
-    const temp = await rsp.json();
-    setMovieData(temp);
-  };
-
-  fetchMovie();
-
   useEffect(() => {
-    fetch('https://localhost:4000/movie')
-      .then((response) => response.json())
-      .then((json) => json.filter((x: { edited: string }) => x.edited == 'Yes'))
-      .then((json) => setMovieData(json));
+    const fetchMovie = async () => {
+      const rsp = await fetch('https://localhost:4000/movie');
+      const temp = await rsp.json();
+      setMovieData(temp);
+    };
+    fetchMovie();
   }, []);
 
   return (
